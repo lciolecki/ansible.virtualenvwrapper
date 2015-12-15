@@ -1,0 +1,11 @@
+---
+
+- name: Install virtualenvwrapper
+  sudo: yes
+  pip: >
+    name=virtualenvwrapper
+    version={{ virtualenvwrapper_version }}
+    state=present
+  tags:
+    - virtualenvwrapper
+    - virtualenvwrapper_installation
