@@ -3,7 +3,7 @@
 galaxy_info:
   author: lciolecki
   description: "Ansible role install and configure virtualenvwrapper"
-  min_ansible_version: 1.4
+  min_ansible_version: 2.0
   license: MIT
   platforms:
     - name: Ubuntu
