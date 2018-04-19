@@ -5,8 +5,8 @@
   action:
     module: lineinfile
     dest: "{{ virtualenvwrapper_shell_file }}"
-    regexp: "export WORKON_HOME"
     line: "export WORKON_HOME={{ virtualenvwrapper_home }}"
+    insertbefore: "BOF"
     state: present
     backup: yes
     create: yes
@@ -19,8 +19,8 @@
   action:
     module: lineinfile
     dest: "{{ virtualenvwrapper_shell_file }}"
-    regexp: "export PROJECT_HOME"
     line: "export PROJECT_HOME={{ virtualenvwrapper_project }}"
+    insertafter: "export WORKON_HOME={{ virtualenvwrapper_home }}"
     state: present
     backup: yes
     create: yes
@@ -33,8 +33,8 @@
   action:
     module: lineinfile
     dest: "{{ virtualenvwrapper_shell_file }}"
-    regexp: "export VIRTUALENVWRAPPER_PYTHON"
     line: "export VIRTUALENVWRAPPER_PYTHON={{ virtualenvwrapper_python }}"
+    insertafter: "export PROJECT_HOME={{ virtualenvwrapper_project }}"
     state: present
     backup: yes
     create: yes
@@ -47,8 +47,8 @@
   action:
     module: lineinfile
     dest: "{{ virtualenvwrapper_shell_file }}"
-    regexp: "export VIRTUALENVWRAPPER_VIRTUALENV"
     line: "export VIRTUALENVWRAPPER_VIRTUALENV={{ virtualenvwrapper_virtualenv }}"
+    insertafter: "export VIRTUALENVWRAPPER_PYTHON={{ virtualenvwrapper_python }}"
     state: present
     backup: yes
     create: yes
@@ -61,11 +61,11 @@
   action:
     module: lineinfile
     dest: "{{ virtualenvwrapper_shell_file }}"
-    regexp: "source {{ virtualenvwrapper_source }}"
     line: "source {{ virtualenvwrapper_source }}"
+    insertafter: "export VIRTUALENVWRAPPER_VIRTUALENV={{ virtualenvwrapper_virtualenv }}"
     state: present
     backup: yes
     create: yes
   tags:
     - virtualenvwrapper
-    - virtualenvwrapper.configuration
+    - virtualenvwrapper.configurationa
